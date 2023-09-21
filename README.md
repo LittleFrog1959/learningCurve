@@ -5,37 +5,54 @@ I created this repo to help a learning curve I'm working on with a friend.  The 
 
 Here's a really short form set of notes on the work I did to load up a working environment for my learning curve...
 
-# Notepad++
+## Notepad++
 I like notepad++ as a text editor.  To load it, go here;
+
 https://notepad-plus-plus.org/
+
 But this only works with Windows so may not be of interest.
 
-# Github & Git
+## Github & Git
 Get the git software on my PC as follows;
-Goto https://github.com/git-guides/install-git
-Navigate to the correct installer instructions (Windows for me).
-**Don't just accept the obvious link!**
-Click on the “git-scm” link
-Click on the “Click here to download” link
-The installer is loaded really quickly but you may have to answer some security questions if you’re using a new version of Chrome.
-Navigate to the Download area on your computer and start the program.  On my computer, it’s called “Git-2.42.0.2-64-bit.exe”.
-Click through the install process but you have to change some settings.
-•	On the second screen, include “Additional icons” “On the desktop”
-•	On the forth screen, select “use notepad++….” (you may have to load this as described above if you don’t have it)
-•	On the fifth screen, select “Override…”.  I’m using the convention of the main branch being in “main” rather than “master”.
-Let the install happen.  At the end, the installer tries to load some release notes.  This is not a problem but you might need to manually tell the installer which browser to use.
+
+1. Goto https://github.com/git-guides/install-git
+1. Navigate to the correct installer instructions (Windows for me).  **Don't just accept the obvious link!**
+1. Click on the “git-scm” link.
+1. Click on the “Click here to download” link.  The installer is loaded really quickly but you may have to answer some security questions if you’re using a new version of Chrome.
+1. Navigate to the Download area on your computer and start the program.  On my computer, it’s called “Git-2.42.0.2-64-bit.exe”.
+1. Click through the install process but you have to change some settings.
+   
+* On the second screen, include “Additional icons” “On the desktop”
+* On the forth screen, select “use notepad++….” (you may have to load this as described above if you don’t have it)
+* On the fifth screen, select “Override…”.  I’m using the convention of the main branch being in “main” rather than “master”.  Let the install happen.  At the end, the installer tries to load some release notes.  This is not a problem but you might need to manually tell the installer which browser to use.
+
 Assuming that you followed above, you should have an icon on your desktop called “Git bash”.  Double click it.  If you do not then fire up a terminal and type;
+```
 git-version
+```
 You should get back
+```
 git version 2.42.0.windows.2
+```
 # Create a GitHub account
 I already have a Git account so I’ve not documented how to do this.
+
 # Setting up a repo to use with the book
-Start a terminal session.  We need to create a directory for the repo.  I like to keep mine in my documents folder.
-Enter the following (you will need to change this to suite your computer);
+
+> [!IMPORTANT]
+> Unless you're starting from scratch, you won't need to do this section.  This is what I did to create the repo from scratch, assuming you don't need to do that, goto the next section which explains now to clone and colaborate.
+
+Set up a repo for the project as follows
+1. Start a terminal session
+1. We need to create a directory for the repo.  I like to keep mine in my documents folder.  Enter the following (you will need to change this to suite your computer);
+   
+```
 cd /c/Users/dgwai/Documents
 mkdir learningCurve
+cd learningCurve
+```
 Use your text editor to create the following file inside the “learningCurve” directory
+```
 <!doctype html>
 <html>
 	<head>
@@ -55,12 +72,18 @@ Use your text editor to create the following file inside the “learningCurve”
 		</p>
 	</body>
 </html>
-Make sure the file is in the correct place by entering the following in the terminal;
+```
+1. Save the file and call it "index.html"
+1. Make sure the file is in the correct place by entering the following in the terminal;
+```
 ls -l
+```
 You should see something a bit like this;
+```
 -rw-r--r-- 1 dgwai 197609 359 Sep 20 13:47 index.html
-We can check that the file is working by pointing a browser at the file we just created.
-There are many ways to do this but on my PC, I use File Explorer to go to the correct directory and then simply double click on the file.  Because Windows knows what to do with a .html file, it starts the browser and loads the file.  You should see something like this in your browser;
+```
+1. We can check that the file is working by pointing a browser at the file we just created.  There are many ways to do this but on my PC, I use File Explorer to go to the correct directory and then simply double click on the file.  Because Windows knows what to do with a .html file, it starts the browser and loads the file.  You should see something like this in your browser;
+[Image of the browser screen](https://github.com/LittleFrog1959/learningCurve/blob/main/browserScreenDump.png)
  
 You might also get some error messages but don’t worry about that.
 Before we can interact with GitHub, we need to set up some global variables on the PC using the instructions contained in the training video 1.6 as follows;
