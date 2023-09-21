@@ -1,4 +1,4 @@
-var counter = 3;
+var counter = 4;
 
 while (counter > 0) {
 	document.write ("<p>", counter, "</p>");
