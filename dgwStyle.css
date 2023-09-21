@@ -2,7 +2,11 @@ body {
   background-color: powderblue;
 }
 h1 {
+<<<<<<< HEAD
   color: green;
+=======
+  color: rgb(79, 121, 33);
+>>>>>>> c3019a92b994b8f1bb6fd577068974bbc7528d8a
 }
 p {
   color: red;
