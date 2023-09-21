@@ -83,41 +83,56 @@ You should see something a bit like this;
 -rw-r--r-- 1 dgwai 197609 359 Sep 20 13:47 index.html
 ```
 1. We can check that the file is working by pointing a browser at the file we just created.  There are many ways to do this but on my PC, I use File Explorer to go to the correct directory and then simply double click on the file.  Because Windows knows what to do with a .html file, it starts the browser and loads the file.  You should see something like this in your browser;
-[Image of the browser screen](/browserScreenDump.png)
+[Image of the browser screen](browserScreenDump.png)
  
-You might also get some error messages but don’t worry about that.
-Before we can interact with GitHub, we need to set up some global variables on the PC using the instructions contained in the training video 1.6 as follows;
+You might also get some error messages from the browser, especially if you look at "Developer tools" but don’t worry about that they arecaused by files being referenced by the HTML not yet being present.
+
+1. Before we can interact with GitHub, we need to set up some global variables on the PC using the instructions contained in the training video 1.6 as follows;
+```
 git config –global user.name “LittleFrog1959”
 git config –global user.email "my e-mail address"
-Now we need to turn the directory into a repository and we do this with the instructions contained in training video 1.7 as follows;
+```
+Now we need to turn the directory into a repository and we do this with the instructions contained in the YouTube training video 1.7 as follows;
+1. Check we're in the correct directory
+```
 pwd
-(to check we’re in the correct directory)
 /c/Users/dgwai/Documents/learningCurve
-
+```
+1. Check it’s not already a repository
+```
 git status
-(to check it’s not already a repository)
 fatal: not a git repository (or any of the parent directories): .git
-git init (to create the local repository)
+```
+1. Create the local repository
+```
+git init
 Initialized empty Git repository in C:/Users/dgwai/Documents/learningCurve/.git/
-Then proceed by entering the following;
+```
+1. Check it worked
+```
 git status
-(to check it worked)
 On branch main
 No commits yet
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         index.html
 nothing added to commit but untracked files present (use "git add" to track)
+```
+1. Add our file using;
+```
 git add index.html
+```
 
-Then we can commit the changes using;
+1. Then we can commit the changes using;
+```
 git commit -m "Initial commit of new repo to learn about HTML5"
 main (root-commit) 04fad29] Initial commit of new repo to learn about HTML5
  1 file changed, 19 insertions(+)
  create mode 100644 index.html
-
-Now we have to create the repository using your browser.  Log into your GitHub account and create a new repo with the same name as the directory you’re using locally.  Don’t add any files to it.
+```
+1. Now we have to create the repository using your browser.  Log into your GitHub account and create a new repo with the same name as the directory you’re using locally.  Don’t add any files to it.
 Then back on the terminal session enter the following;
+```
 git push -u origin main
 Enumerating objects: 3, done.
 Counting objects: 100% (3/3), done.
@@ -128,17 +143,19 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/LittleFrog1959/learningCurve.git
  * [new branch]      main -> main
 branch 'main' set up to track 'origin/main'.
-Install and run node.js
+```
+## Install and run node.js
 Check to see if node is installed by starting a terminal and entering the following;
+```
 node
 Welcome to Node.js v18.18.0.
 Type ".help" for more information.
 >
+```
+Use ^D to exit.  If you get an error in place of the above then get node.js from here; https://nodejs.org/en/download
 
-
-Use ^D to exit.  If you get an error in place of the above then get node.js from here;
-https://nodejs.org/en/download
-Obviously you need to install the correct version.  I used the Windows version.  I accepted all the defaults.  There were some errors while it was installing but it still works.
+Obviously you need to install the correct version for your computer type (e.g. Apple).  I used the Windows version.  I accepted all the defaults.  There were some errors while it was installing but it still works.
+```
 Use a text editor to create a file called serverSide.js which should contain the following;
 const http = require('http');
 const hostname = '127.0.0.1';
@@ -151,42 +168,40 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+```
 Then start a terminal session and move to the directory that you saved the above file in.  Start the program using the following;
+```
 node serverSide.js
 Server running at http://127.0.0.1:3000/
-Now point your browser at the node server you’ve just created by entering the following into the URL;
-http://127.0.0.1:3000/
+```
+Now point your browser at the node server you’ve just created by entering the following into the URL;  http://127.0.0.1:3000/
+
 Use ^C to exit the server when you’ve had enough.
+
 You might be able to see the node server across your LAN but to do this, you need to find the IP address of the server.  Using your terminal, enter the following;
+```
 ipconfig
-
 Windows IP Configuration
-
-
 Ethernet adapter Ethernet 2:
-
    Media State . . . . . . . . . . . : Media disconnected
    Connection-specific DNS Suffix  . :
-
 Ethernet adapter Ethernet 3:
-
    Media State . . . . . . . . . . . : Media disconnected
    Connection-specific DNS Suffix  . :
-
 Ethernet adapter Ethernet:
-
    Connection-specific DNS Suffix  . : cable.virginm.net
    Link-local IPv6 Address . . . . . : fe80::2a84:396d:18dc:8c93%4
    IPv4 Address. . . . . . . . . . . : 192.168.0.72
    Subnet Mask . . . . . . . . . . . : 255.255.255.0
    Default Gateway . . . . . . . . . : 192.168.0.1
-
-In this example, my IP address is 192.168.0.72.  So go to another computer (or your mobile phone) on your LAN and enter the following into the browser URL;
-http://192.168.0.72:3000
+```
+In this example, my IP address is 192.168.0.72.  So go to another computer (or your mobile phone) on your LAN and enter the following into the browser URL;  http://192.168.0.72:3000
 As I say, it might not work if your security settings don’t allow cross LAN traffic.
+
 There is a good node.js tutorial here;
 https://www.w3schools.com/nodejs/default.asp
-Load Postgres
+
+## Load Postgres
 We’ve already done this.  You can check Postgres is loaded using the following from a terminal;
 createdb
 If nothing happens then that’s good!  Use ^C to get out.  If you get an error, but you know that it’s already loaded then the program may be that the path is not set.
@@ -196,10 +211,12 @@ Then click on “Environment variables”
 In the top window, click once on “Path” and then “Edit” and finally “New”.  Paste this into the entry area;
 C:\Program Files\PostgreSQL\16\bin ;C:\Program Files\PostgreSQL\16\lib
 And then “OK” your way out.
-Load Postgres – node interface
+
+## Load Postgres – node interface
 Use the following;
+```
 npm install postgres
 added 1 package in 1s
 1 package is looking for funding
   run `npm fund` for details
-
+```
