@@ -83,7 +83,7 @@ You should see something a bit like this;
 -rw-r--r-- 1 dgwai 197609 359 Sep 20 13:47 index.html
 ```
 1. We can check that the file is working by pointing a browser at the file we just created.  There are many ways to do this but on my PC, I use File Explorer to go to the correct directory and then simply double click on the file.  Because Windows knows what to do with a .html file, it starts the browser and loads the file.  You should see something like this in your browser;
-[Image of the browser screen](https://github.com/LittleFrog1959/learningCurve/blob/main/browserScreenDump.png)
+[Image of the browser screen](/assets/images/browserScreenDump.png)
  
 You might also get some error messages but don’t worry about that.
 Before we can interact with GitHub, we need to set up some global variables on the PC using the instructions contained in the training video 1.6 as follows;
