@@ -1,0 +1,22 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "DGW's attempt at a recipe book",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Waine",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "consolidate": "*",
+    "dust": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "*",
+    "nodemon": "*",
+    "pg": "*",
+    "pg-format": "*"
+  }
+}

@@ -1,0 +1,136 @@
+{>"layout" /}
+
+{<body}
+    <h1> Recipe database</h1>
+    <p />
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#formModal">
+      Add recipe
+    </button>
+    <br />
+    
+    {#recipes}
+        <div class="card card-body bg-light">
+            <h3>
+                <img src={imagelink} alt="Foodimage" width="100" height="100">
+                {recipename}
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#recipe_{id}" role="button" aria-expanded="true" aria-controls="recipe_{id}">
+                    <svg class="float-right" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 13.75L12 19.25L6.75 13.75"/>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18.25V4.75"/>
+                    </svg>
+                </a>
+            </h3>
+            
+            <div class="collapse" id="recipe_{id}">
+                <div class="card card-body">
+                    <p><strong> Ingredients: </strong> <pre style="white-space:pre-line;">{ingredients}</pre> </p>
+                    <p><strong> Directions: </strong><pre style="white-space:pre-line;">{directions}</pre></p>
+                    <p><strong> Image link: </strong><pre style="white-space:pre-line;">{imagelink}</pre></p>
+                    
+                    <button class="btn btn-secondary edit-recipe"
+                    data-bs-toggle="modal"
+                    data-bs-target="#formEditModal"
+                    data-id="{id}"
+                    data-name="{recipename}"
+                    data-ingredients="{ingredients}"
+                    data-directions="{directions}"
+                    data-imagelink="{imagelink}"
+                    >
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.75 19.25L9 18.25L18.2929 8.95711C18.6834 8.56658 18.6834 7.93342 18.2929 7.54289L16.4571 5.70711C16.0666 5.31658 15.4334 5.31658 15.0429 5.70711L5.75 15L4.75 19.25Z"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 19.25H13.75"/>
+                        </svg>
+                   </button>
+                   
+                    <button class="btn btn-danger delete-recipe" data-id="{id}">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.75L7.59115 17.4233C7.68102 18.4568 8.54622 19.25 9.58363 19.25H14.4164C15.4538 19.25 16.319 18.4568 16.4088 17.4233L17.25 7.75"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 7.5V6.75C9.75 5.64543 10.6454 4.75 11.75 4.75H12.25C13.3546 4.75 14.25 5.64543 14.25 6.75V7.5"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 7.75H19"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <p />
+    {/recipes}
+    
+    <!-- Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="/add">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Recipe name</label>
+                            <input type="text" class="form-control" name = "recipename" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ingredents</label>
+                            <textarea class="form-control" name = "ingredients"/></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Directions</label>
+                            <textarea class="form-control" name = "directions"/></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Image link</label>
+                            <textarea class="form-control" name = "imagelink"/></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" 
+                        value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="formEditModal" tabindex="-1" aria-labelledby="formEditModel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="/edit">
+                    <input type="hidden" id="edit-form-id" name="id" />
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New recipe</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Recipe name</label>
+                            <input type="text" class="form-control" name = "recipename" id="edit-form-name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ingredents</label>
+                            <textarea class="form-control" name = "ingredients" id="edit-form-ingredients"/></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Directions</label>
+                            <textarea class="form-control" name = "directions" id="edit-form-directions"/></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Image link</label>
+                            <textarea class="form-control" name = "imagelink" id="edit-form-imagelink"/></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" 
+                        value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{/body}
+
